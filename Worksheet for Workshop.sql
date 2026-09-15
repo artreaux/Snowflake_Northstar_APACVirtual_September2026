@@ -24,3 +24,10 @@ CREATE OR REPLACE TABLE TASTY_BYTES.RAW_POS.country(
    city VARCHAR(16777216),
    city_population VARCHAR(16777216)
 );
+
+CREATE OR REPLACE FILE FORMAT TASTY_BYTES.PUBLIC.CSV_FF;
+
+file_format = tasty_bytes.public.csv_ff;
+
+COPY INTO tasty_bytes.raw_pos.country
+FROM @tasty_bytes.public.s3load/raw_pos/country/;
